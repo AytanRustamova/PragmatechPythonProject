@@ -1,0 +1,14 @@
+Django enviroment.
+
+1. pip install pipenv
+2. pipenv install django 
+3. pipenv shell (django-admin)
+4. creating project: django-admin startproject "project name"
+5. for directory creating project: django-admin startproject projectname .
+6. python [manage.py](http://manage.py) runserver (default port 8000)
+7. finding path in terminal. pipenv --venv
+8. creating app: python manage.py startapp appname
+
+
+Map Url to views
+1. create file urls.py in app. and import path (from django.urls import path, from . import views)
