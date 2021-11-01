@@ -1,12 +1,12 @@
 from django.shortcuts import render
+from .models import Blog
 
 # Create your views here.
 
-def index(request):
-    return render(request, 'blog/templates/index.html', )
 
 def about(request):
-    return render(request, 'blog/templates/about.html')
+    return render(request, 'about.html')
 
 def blog(request):
-    return render(request, 'blog/templates/blogs.html')
+    blogs = Blog.objects.all()
+    return render(request, 'blogs.html', {'blogs':blogs})
