@@ -1,19 +1,27 @@
 {% extends "base.html" %}
+
+{% load static custom_filter custom_tag %}
 {% block content %}
 
 
-
-{% load static %}
 <h1>Blog Page</h1>
-{% for blog in blogs %}
+{% for blog in blogs %} 
+<h3> Blog - {{ forloop.counter }} </h3>
+
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="{% static 'uploads/food.jpg' %}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{blog.title}}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title">{{blog.title|truncatechars:5}}</h5>
+    <p class="card-text">{{blog.text|my_uppercase }}</p>
+    <p class="card-text">Created: {{blog.created_at}}</p>
+    {% current_time "%Y:%M:%D" as the_time %}
+    <p class="card-text">My custom tag for date : {{ the_time }}</p>
     <a href="{{blog.get_absolute_url}}" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
+{% empty %}
+<p>Blog is not available</p>
+
 {% endfor %}
 
 
